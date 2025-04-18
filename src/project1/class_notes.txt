@@ -1,0 +1,633 @@
+https://ai-riksarkivet.github.io/htrflow/latest/
+https://huggingface.co/spaces/Riksarkivet/htr_demo
+
+
+
+
+Work with transformer 👍
+
+
+
+
+Images or text input to the agent:
+
+
+Work on easy orc dat
+
+
+—-----
+Make 2 diagrams 
+
+
+Easyorc notes:
+
+
+Agent notes:
+
+
+AI Agents Fundamentals In 21 Minutes
+Building AI Agents: Chat Trigger, Memory, and System/User Messages Explained [Part 1]
+Multi AI Agent Systems with crewAI - DeepLearning.AI
+
+
+Study : AI prompt course         
+Prompt engineering 
+—--------------
+
+
+Model Easy Orc
+Agent: 
+—--------
+Multi AI Agent Systems with crewAI
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Project Idea: Build an agent to help me look for Jobs, Look at the descriptions, find top 5 key skills, What kind of employed they need, and check your resume if you are a Job(Based on what to look for in Basta Notes)
+
+
+Overview:
+Notes:
+Multi AI agent system 
+Role Playing, Focus, Tools, Cooperation, Guardrails, Memory 
+Multi-Agent Collaboration 
+
+
+
+
+Agent: 
+* Tech Job Researcher
+* Personal Profiler for Engineers
+* Resume Strategist for Engineers
+* Engineering interview Preparer
+
+
+Task agent is going to be able to do:
+* Search the internet
+* Read websites
+* Read resume
+* Perform RAG (Retrieval Augmented Generation) on resume
+
+
+What is Agentic Automation?
+
+
+
+
+Data collection and Analysis 
+* Research - Data collection 
+* Comparison 
+* Scoring 
+* Talking points 
+
+
+What are Ai agents?
+LLM (Large Language Model) : 
+Regular Prompting experience: output and feedback 
+Prompt engineering 
+* https://www.deeplearning.ai/short-courses/chatgpt-prompt-engineering-for-developers/        
+
+
+LLM  → created content → reasonably react : An Agent is born when the LLM has a recurrent conversion that makes the Ai think 
+
+
+Tools make Agent do more : make a full Agents
+
+
+Multi-Agent Systems are multiple agent connect that leads to one answer 
+* Benefit: Have customize agents to do one task well
+* Ex: Researcher and writer
+* Can have agents running in different LLM 
+
+
+CrewAI
+
+
+Initial Building Blocks:
+* Agents 
+* Tasks 
+* Crews 
+
+
+
+
+Create Agents to Research and Write an Article:
+
+
+Import from the crewAI library: from crewai import Agent, Task, Crew
+ As a LLM for your agents, you'll be using OpenAI's `gpt-3.5-turbo`.
+
+
+Define your Agents, and provide them a `role`, `goal` and `backstory`.
+* It has been seen that LLMs perform better when they are role playing.
+Define your Tasks, and provide them a `description`, `expected_output` and `agent`.
+Creating a crew:
+* Pass the tasks to be performed by those agents.
+* For this simple example, the tasks will be performed sequentially (i.e they are dependent on each other), so the _order_ of the task in the list _matters
+* verbose=2` allows you to see all the logs of the execution. 
+
+
+Using crew.kickoff(input = “”) : launch the crew 
+
+
+Display the results of your execution as markdown in the notebook
+* from IPython.display import Markdown
+   * Markdown(result)
+
+
+Summary:
+* Agent:
+* Task:
+* Crew:
+* Agent perform better when role-playing
+* You should focus on goals and expectations 
+* One Agent can do multiple tasks 
+* Task and Agent should be granular
+* Task can be executed in different ways 
+
+
+
+
+
+
+
+
+Ex Agent:
+        Planner = Agent(
+                role = ="Content Planner",
+                goal = "Plan engaging and factually accurate content on {topic}", 
+backstory = "You're working on planning a blog article "
+              "about the topic: {topic}."
+              "You collect information that helps the "
+              "audience learn something "
+              "and make informed decisions. "
+              "Your work is the basis for "
+              "the Content Writer to write an article on this topic."
+allow_delegation = False,
+verbose=True
+        )
+
+
+write = Task( 
+                Description =(
+                "1. Use the content plan to craft a compelling "
+"blog post on {topic}.\n"
+"2. Incorporate SEO keywords naturally.\n"
+"3. Sections/Subtitles are properly named "
+ "in an engaging manner.\n"
+"4. Ensure the post is structured with an "
+         "engaging introduction, insightful body, "
+"and a summarizing conclusion.\n"
+"5. Proofread for grammatical errors and "
+"alignment with the brand's voice.\n"
+                    ),
+                    expected_output="A comprehensive content plan document "
+                                                 "with an outline, audience analysis, "
+                                                 "SEO keywords, and resources.",
+                    agent=planner,
+)
+
+
+crew = Crew(
+    agents=[planner, writer, editor],
+    tasks=[plan, write, edit],
+    verbose=2
+)
+result = crew.kickoff(inputs={"topic": "Artificial Intelligence"})
+
+
+from IPython.display import Markdown
+Markdown(result)
+  
+
+
+
+
+
+Key elements of Ai agent:
+Role Playing: 
+* Impact the output 
+* Use Keywords
+Focus:
+* What are they trying to be achieve
+Tools:  
+* Can overload agent with too many tools
+* Key tools 
+Cooperations:  
+* Can connect to many agents and get feedback
+* Take feedback 
+* Delegate tasks 
+Guardrails:
+* Fussy input is fussy output 
+* Consistency results
+Memory:
+* Make a big impact
+* Remember what it has done
+* Short term memory 
+   * Memory during execution of a task 
+   * Share knowledge, activities, and learnings with other agents 
+   * Share intermediate information even before providing “Task completion” output 
+* Long term memory
+   * Memory stored after execution of current tasks 
+   * Long term memory can be used in any future tasks 
+   * Leads to “self-improving” agents
+* Entity memory 
+   * Store subjects(entities)
+
+
+
+
+
+
+Multi-agent Customer support Automation:
+
+
+!pip install crewai==0.28.8 crewai_tools==0.1.6 langchain_community==0.0.29
+
+
+
+
+Agent: Role, Goal, Backstory 
+* Allow_delegation is default True
+   * This means the agent _can_ delegate its work to another agent which is better suited to do a particular task. 
+*  Verbose
+  
+
+  
+
+
+
+Role Playing: agents have been given a role, goal and backstory
+Focus: agents have been prompted to get into the character of the roles they are playing
+Cooperation: Support Quality Assurance Agent can delegate work back to the Support Agent, allowing for these agents to work together.
+
+
+Tools from crewAi: 
+* SerperDevTool
+* ScrapeWebsiteTool
+* WebsiteSearchTool
+Assigning Tools: Task Tools override the Agent Tools.
+* Agent Level: The Agent can use the Tool(s) on any Task it performs.
+* Task Level: The Agent will only use the Tool(s) when performing that specific Task.
+Task:  
+* Description 
+* Expected_output 
+* Tools 
+* Agent 
+
+
+
+
+Setting ` ` when putting the crew together enables Memory.
+
+
+
+
+
+
+
+
+
+
+Code:
+* search_tool = SerperDevTool()
+* scrape_tool = ScrapeWebsiteTool()
+* docs_scrape_tool = ScrapeWebsiteTool( website_url = "https://docs.crewai.com/how-to/Creating-a-Crew-and-kick-it-off/" )
+* tools=[docs_scrape_tool],
+* crew = Crew(
+ agents=[support_agent, support_quality_assurance_agent],
+ tasks=[inquiry_resolution, quality_assurance_review],
+verbose=2,
+ memory=True
+)
+* inputs = {
+        "customer": "DeepLearningAI",
+            "person": "Andrew Ng",
+            "inquiry": "I need help with setting up a Crew "
+              "and kicking it off, specifically "
+              "how can I add memory to my crew? "
+               "Can you provide guidance?"
+}
+result = crew.kickoff(inputs=inputs)
+
+
+
+
+Mental Framework for agent creation:
+
+
+Manager
+* What is the goal?
+* What is the process?
+* What kind of people would I need to hire to get this done?
+* Keyword, Actual people needed to complete a task: what are their goals?
+
+
+Agents "self improve" using memory
+
+
+Guardrails prevents agents from going into "rabbit holes" (unproductive, repetitive loops)
+
+
+Agents always attempt to get to an answer (avoid iterating indefinitely)
+
+
+Focus
+* narrowly defined task
+* specific agent roles and objectives
+* limited set of tools assigned to one agent
+
+
+Key elements of agents tools:
+What makes a great tool?
+* Versatile 
+* Fault-tolerant
+* Caching 
+  
+
+Fault -tolerent
+What happens when an exception/error occurs?
+Option 1: stop execution
+Option 2: Fail gracefully (and try again)
+* Send error message back to agent 
+* Ask agent to retry given the error message 
+
+
+Caching:
+* Caching layer
+* smart cache
+* Cross-agent caching 
+* prevent unnecessary requests
+* Stay within rate limits (number of requests per second allowed for an API call)
+* Save time (retrieving cached results is much faster than an API call)
+
+
+Examples of tools:
+* Search the internet
+* Scrape a website
+* Connect to a database
+* Call an API
+* Send notifications 
+* Langchain
+
+
+Tools for a customers outreach campaign (code):
+3 element of caching:
+* Versatility
+* Fault Tolerance
+*  Caching
+https://serper.dev/
+
+
+Tools:
+* DirectoryReadTool : Read directory 
+* FileReadTool: Read certain file 
+* SerperDevTool: Read the internet
+
+
+
+
+Can make custom tool using crewAi's:
+* Every Tool needs to have a `name` and a `description`.
+* For simplicity and classroom purposes, `SentimentAnalysisTool` will return `positive` for every text.
+* When running locally, you can customize the code with your logic in the `_run` function.
+Exception Handling:
+* Option 1: Framework stops execution (you can choose how to handle the exceptions, such as restart execution.)
+* Option 2: Framework continues execution (CrewAl is designed this way)
+* 
+
+Code:
+!pip install crewai==0.28.8 crewai_tools==0.1.6 langchain_community==0.0.29
+from crewai_tools import DirectoryReadTool, \ FileReadTool, \ SerperDevTool
+
+
+directory_read_tool = DirectoryReadTool(directory='./instructions')
+file_read_tool = FileReadTool()
+search_tool = SerperDevTool()
+
+
+from crewai_tools import BaseTool
+
+
+class SentimentAnalysisTool(BaseTool):
+name: str ="Sentiment Analysis Tool"
+description: str = ("Analyzes the sentiment of text "
+                                 "to ensure positive and engaging communication.")
+    
+    def _run(self, text: str) -> str:
+            # Your custom code tool goes here
+           return "positive"
+
+
+sentiment_analysis_tool = SentimentAnalysisTool()
+
+
+
+
+Recap of tools:
+* Versatile 
+* fault -tolerant 
+* Caching 
+
+
+
+
+Key elements of well defined tasks : 
+Task:
+* Clear description of the task 
+* Set a clear and concise expectation
+* Set context
+* Set a callback
+* Override Agent tools with specific task tools
+* Force human input before end of task
+* Execute asynchronously
+* Output as pydantic
+* Output as json
+* Run in parallel
+Manager
+* What is the goal?
+* What is the process?
+* What kind of individual would I need to hire to get this done?
+* Which processes and tasks do I expect the individuals on my team to do?
+Automate Event Planning
+SERPER_API_KEY
+Pydantic models are simply classes which inherit from BaseModel and define fields as annotated attributes.
+Create a class `VenueDetails` using Pydantic based models:
+* Agents will populate this object with information about different venues by creating different instances of it.
+
+
+By using `output_json`, you can specify the structure of the output you want.
+By using `output_file`, you can get your output in a file.
+By setting `human_input=True`, the task will ask for human feedback (whether you like the results or not) before finalising it.
+
+
+By setting `async_execution=True`, it means the task can run in parallel with the tasks which come after it.
+
+
+  
+
+
+
+output_file="marketing_report.md",  # Outputs the report as a text file
+
+
+
+
+
+
+CODE: 
+from crewai_tools import ScrapeWebsiteTool, SerperDevTool
+# Initialize the tools
+search_tool = SerperDevTool()
+scrape_tool = ScrapeWebsiteTool()
+
+
+        from pydantic import BaseModel
+# Define a Pydantic model for venue details 
+# (demonstrating Output as Pydantic)
+class VenueDetails(BaseModel):
+                  name: str
+                    address: str
+                    capacity: int
+                    booking_status: str
+        
+venue_task = Task(
+                    description="Find a venue in {event_city} "
+                                        "that meets criteria for {event_topic}.",
+                    expected_output="All the details of a specifically chosen"
+                                                   "venue you found to accommodate the event.",
+                    human_input=True,
+                    output_json=VenueDetails,
+                    output_file="venue_details.json",  
+                      # Outputs the venue details as a JSON file
+                    agent=venue_coordinator
+)
+
+
+Multi Agent collaboration:
+How do Multi Agents collaborate: 
+  
+
+The initial context will fade away as it moves sequentially 
+  
+
+  
+
+
+
+Multi AI Agent Systems with crewAI:
+
+
+
+
+search_tool = SerperDevTool() 
+scrape_tool = ScrapeWebsiteTool()
+
+
+The `Process` class helps to delegate the workflow to the Agents (kind of like a Manager at work)
+*  In the example below, it will run this hierarchically.
+*  `manager_llm` lets you choose the "manager" LLM you want to use.
+  
+
+
+
+Code:
+from crewai import Crew, Process
+from langchain_openai import ChatOpenAI
+
+
+# Define the crew with agents and tasks
+financial_trading_crew = Crew(
+    agents=[data_analyst_agent, 
+            trading_strategy_agent, 
+            execution_agent, 
+            risk_management_agent],
+    
+    tasks=[data_analysis_task, 
+           strategy_development_task, 
+           execution_planning_task, 
+           risk_assessment_task],
+    
+    manager_llm=ChatOpenAI(model="gpt-3.5-turbo", 
+                           temperature=0.7),
+    process=Process.hierarchical,
+    verbose=True
+)
+        
+Build a crew to trailer job applications (code):
+
+
+What is the goal:
+* Maximize your chances of getting an interview for a given job posting
+What is the Process?
+* Learn about the job requirements
+* Cross that with your skill set and experiences
+* Reshape resume to highlight relevant areas
+* Rewrite resume with appropriate language
+* Set talking points for your initial interview
+
+
+You can pass a list of tasks as `context` to a task.
+* The task then takes into account the output of those tasks in its execution.
+* The task will not run until it has the output(s) from those tasks.
+
+
+output_file="tailored_resume.md": will output a file
+
+
+Code:
+from crewai_tools import (
+  FileReadTool,
+  ScrapeWebsiteTool,
+  MDXSearchTool,
+  SerperDevTool
+)
+        search_tool = SerperDevTool()
+scrape_tool = ScrapeWebsiteTool()
+read_resume = FileReadTool(file_path='./fake_resume.md')
+semantic_search_resume = MDXSearchTool(mdx='./fake_resume.md')
+
+
+
+
+# Task for Interview Preparer Agent: Develop Interview Materials
+interview_preparation_task = Task(
+    description=(
+        "Create a set of potential interview questions and talking "
+        "points based on the tailored resume and job requirements. "
+        "Utilize tools to generate relevant questions and discussion "
+        "points. Make sure to use these question and talking points to "
+        "help the candiadte highlight the main points of the resume "
+        "and how it matches the job posting."
+    ),
+    expected_output=(
+        "A document containing key questions and talking points "
+        "that the candidate should prepare for the initial interview."
+    ),
+    output_file="interview_materials.md",
+    context=[research_task, profile_task, resume_strategy_task],
+    agent=interview_preparer
+)
+
+
+—----------------------------------------------------------------------
+Next step/Conclusion:
+crewAi Documentations
+crewAi Assistant : 
+Youtube: crewa

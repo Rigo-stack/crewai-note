@@ -1,0 +1,88 @@
+grammar_task:
+  description: >
+    Edit the text file content below to correct grammar and punctuation issues:
+
+    {notes}
+
+    Ensure all changes preserve the original meaning and maintain academic tone.
+    Your final result MUST be a fully edited version of the file with corrections applied.
+    Save your output as an edited version to be passed to the final editor.
+  expected_output: >
+    Edited grammar-corrected version of the notes content.
+  agent: grammar_expert
+  output_key: grammar_output
+
+fact_check_task:
+  description: >
+    Review the following notes for factual inaccuracies:
+
+    {notes}
+
+    For each inaccuracy, apply a correction and cite credible sources if possible.
+    Your final result MUST be a corrected version of the content.
+    Save your output to be passed to the final editor.
+
+  expected_output: >
+    A fact-checked report listing inaccuracies found, corrections, and supporting references.
+  agent: factual_expert
+  input_keys: grammar_output
+  output_key: fact_output
+
+outline_task:
+  description: >
+    Convert the following notes into the Outline Method format:
+
+    {notes}
+
+    Use indentation and bullets to clearly structure topics and subpoints. Format your response
+    in clean Markdown.
+  expected_output: >
+    A Markdown document formatted in the Outline Method.
+  agent: outline_expert
+  input_keys: fact_output
+  # output_key: formatted_notes
+
+  
+
+cornell_task:
+  description: >
+    Convert the following notes into the Cornell Method format:
+
+    {notes}
+
+    Format the result with three clearly defined sections:
+    - Cue column with keywords or questions
+    - Notes section with expanded information
+    - Summary at the bottom
+
+    Output must be in Markdown.
+  expected_output: >
+    Markdown document using the Cornell Method format.
+  agent: cornell_expert
+  input_keys: fact_output
+  # output_key: formatted_notes
+
+# final_editing_task:
+#   description: >
+#     As the final editor, your job is to consolidate and merge all previous edits made to the content below:
+
+#     {notes}
+
+#     - Grammar improvements
+#     - Structural enhancements
+#     - Fact-check corrections
+
+#     IMPORTANT: Your final output MUST be a single, well-written paragraph-formatted version of the content.
+
+#     FORMAT RULES:
+#     - Write in plain text only (no Markdown formatting like headers, bullets, bold, etc.)
+#     - Use line breaks naturally at sentence or phrase boundaries
+#     - Final output must be formatted like a readable paragraph — NOT one long line
+#     - Do NOT include any citations, references, or explanations
+
+#     Save the final result as a markdown file: 'report.md'.
+
+#   expected_output: >
+#     A clean, multi-line paragraph version of the content saved to report.md.
+#   agent: final_editor
+#   input_keys: formatted_notes
