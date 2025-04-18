@@ -9,7 +9,8 @@ import os
 # Ensure Python can find project1 inside src/
 # This is a workaround for the fact that we are running this script from the root directory
 # and not from within the src directory.
-sys.path.append(os.path.join(os.path.dirname(__file__), "src"))
+#sys.path.append(os.path.join(os.path.dirname(__file__), "src"))
+sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), "src")))
 
 from project1.crew import Project1
 
