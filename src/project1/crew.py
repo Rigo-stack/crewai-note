@@ -21,28 +21,32 @@ class Project1():
     def grammar_expert(self) -> Agent:
         return Agent(
             config=self.agents_config['grammar_expert'],
-            verbose=True
+            verbose=True,
+            memory=False
         )
 
     @agent
     def factual_expert(self) -> Agent:
         return Agent(
             config=self.agents_config['factual_expert'],
-            verbose=True
+            verbose=True,
+            memory=False
         )
 
     @agent
     def outline_expert(self) -> Agent:
         return Agent(
             config=self.agents_config['outline_expert'],
-            verbose=True
+            verbose=True,
+            memory=False
         )
 
     @agent
     def cornell_expert(self) -> Agent:
         return Agent(
             config=self.agents_config['cornell_expert'],
-            verbose=True
+            verbose=True,
+            memory=False
         )
 
     # @agent
