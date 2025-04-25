@@ -1,6 +1,8 @@
 from crewai.tools import BaseTool
 from typing import Type
 from pydantic import BaseModel, Field
+# from crewai_tools import tool
+# import wikipedia
 
 
 class MyCustomToolInput(BaseModel):
@@ -17,3 +19,10 @@ class MyCustomTool(BaseTool):
     def _run(self, argument: str) -> str:
         # Implementation goes here
         return "this is an example of a tool output, ignore it and move along."
+# @tool
+# def wikipedia_tool(query: str) -> str:
+#     """Returns a summary for a given topic from Wikipedia."""
+#     try:
+#         return wikipedia.summary(query, sentences=3)
+#     except Exception as e:
+#         return f"Failed to get summary: {e}"

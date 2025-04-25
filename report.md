@@ -1,32 +1,37 @@
 ```markdown
-# Cornell Method Notes on AI Agents
-
-## Cue Column
-- What is an AI agent?  
+# Cornell Notes
+## Cues
+- Definition of AI agents
+- Cycle of AI agents
 - Types of AI agents
+- Reflex agents
+- Goal-based agents
+- Utility-based agents
 - Learning agents
 - Applications of AI agents
-- Importance of AI agents in modern systems
 
 ## Notes
-- An **AI agent** is an *autonomous system* that perceives its environment using **sensors**, reasons about the perceptions, and takes actions through **actuators** to accomplish specific goals.  
-- They operate in a *continuous cycle* that includes **observation**, **decision-making**, and **action**.  
-- AI agents have the capability to **adapt over time** based on feedback received from their environment (Russell & Norvig, 2021).  
+- **Definition of AI Agents**: An AI agent is an autonomous system that can perceive its environment through sensors and data inputs, process this information, and execute actions via actuators to meet specific objectives.
+  
+- **Cycle of AI Agents**: These agents function in a continuous loop of observation, decision-making, and action. This enables them to adapt over time, improving effectiveness based on environmental feedback.
 
-- There are various **types of AI agents**:
-  - **Simple reflex agents**: Respond to immediate stimuli from the environment.  
-  - **Goal-based agents**: Plan actions based on desired outcomes.  
-  - **Utility-based agents**: Optimize actions for the highest utility from given choices (Poole, Mackworth, & Goebel, 1998).  
-
-- **Learning agents** take the concept further by enhancing their performance using data derived from *previous experiences*. They often utilize techniques from **machine learning** (Goodfellow et al., 2016).  
-
-- AI agents are *widely utilized* in applications such as:
-  - **Virtual assistants** (e.g., Siri, Google Assistant)
-  - **Recommendation systems** (e.g., Netflix, Amazon)
-  - **Smart home devices** (e.g., smart thermostats, home security systems)
-  - **Autonomous vehicles** (e.g., self-driving cars)  
-  - They are a *core part* of modern AI systems (Siciliano et al., 2016).
+- **Types of AI Agents**: 
+  - **Reflex Agents**: The simplest form of agents that react to immediate stimuli without retaining memory of prior states. They can utilize condition-action rules. 
+    - **Subcategories**: 
+      - *Simple Reflex Agents*: Respond only to current stimuli.
+      - *Model-Based Reflex Agents*: Maintain an internal state to remember previous information.
+  - **Goal-Based Agents**: Plan actions based on desired outcomes and assess possible actions to achieve those goals.
+  - **Utility-Based Agents**: Evaluate actions based on expected utility, aiming to maximize overall satisfaction or benefit.
+  - **Learning Agents**: These agents improve over time by using various strategies like reinforcement learning to adapt their behaviors based on historical data.
+  
+- **Applications of AI Agents**: AI agents play a crucial role in modern technology and are utilized in diverse fields, including:
+    - Virtual assistants
+    - Recommendation systems
+    - Smart home devices
+    - Autonomous vehicles
+    - Healthcare diagnostics
+    - Financial analysis
 
 ## Summary
-AI agents are autonomous systems that interact with their environment to achieve specific goals, learning and adapting over time. They come in various types such as reflex, goal-based, and utility-based agents, with applications across several domains, make them critical in modern artificial intelligence.
+AI agents are sophisticated autonomous systems capable of perceiving their environment, reasoning, and taking action to achieve goals. They engage in a continuous cycle of observation and decision-making, adapting over time through feedback. Categorized into reflex, goal-based, utility-based, and learning agents, they serve various applications across multiple industries, significantly contributing to the advancement of AI technologies and enhancing efficiency in numerous sectors.
 ```

@@ -1,5 +1,7 @@
 from crewai import Agent, Crew, Process, Task
 from crewai.project import CrewBase, agent, crew, task
+from crewai_tools import SerperDevTool
+
 
 # If you want to run a snippet of code before or after the crew starts,
 # you can use the @before_kickoff and @after_kickoff decorators
@@ -21,6 +23,7 @@ class Project1():
     def grammar_expert(self) -> Agent:
         return Agent(
             config=self.agents_config['grammar_expert'],
+            memory=True,
             verbose=True
         )
 
@@ -28,6 +31,7 @@ class Project1():
     def factual_expert(self) -> Agent:
         return Agent(
             config=self.agents_config['factual_expert'],
+            memory=True,
             verbose=True
         )
 
@@ -35,6 +39,7 @@ class Project1():
     def outline_expert(self) -> Agent:
         return Agent(
             config=self.agents_config['outline_expert'],
+            memory=True,
             verbose=True
         )
 
@@ -42,6 +47,22 @@ class Project1():
     def cornell_expert(self) -> Agent:
         return Agent(
             config=self.agents_config['cornell_expert'],
+            memory=True,
+            verbose=True
+        )
+
+    @agent
+    def boxing_expert(self) -> Agent:
+        return Agent(
+            config=self.agents_config['boxing_expert'],
+            memory=True,
+            verbose=True
+        )
+    @agent
+    def flashcard_expert(self) -> Agent:
+        return Agent(
+            config=self.agents_config['flashcard_expert'],
+            memory=True,
             verbose=True
         )
 
@@ -65,6 +86,9 @@ class Project1():
     def fact_check_task(self) -> Task:
         return Task(
             config=self.tasks_config['fact_check_task'],
+            tools=[
+                SerperDevTool()  # tool that allows the agent to search for information on the web
+            ],
         )
 
     @task
@@ -79,6 +103,19 @@ class Project1():
         return Task(
             config=self.tasks_config['cornell_task'],
             output_file='report.md'
+        )
+    
+    @task
+    def boxing_task(self) -> Task:
+        return Task(
+            config=self.tasks_config['boxing_task'],
+            output_file='report.md'
+        )
+    @task
+    def flashcard_task(self) -> Task:
+        return Task(
+            config=self.tasks_config['flashcard_task'],
+            output_file='flashcards.md'
         )
 
     # @task

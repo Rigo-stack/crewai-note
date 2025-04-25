@@ -7,8 +7,9 @@ grammar_task:
     Ensure all changes preserve the original meaning and maintain academic tone.
     Your final result MUST be a fully edited version of the file with corrections applied.
     Save your output as an edited version to be passed to the final editor.
+  # Input: {notes}
   expected_output: >
-    Edited grammar-corrected version of the notes content.
+    The cleaned-up version of the text with improved grammar and clarity.
   agent: grammar_expert
   output_key: grammar_output
 
@@ -42,8 +43,6 @@ outline_task:
   input_keys: fact_output
   # output_key: formatted_notes
 
-  
-
 cornell_task:
   description: >
     Convert the following notes into the Cornell Method format:
@@ -51,15 +50,58 @@ cornell_task:
     {notes}
 
     Format the result with three clearly defined sections:
-    - Cue column with keywords or questions
-    - Notes section with expanded information
+    - Cue column with keywords or questions: 
+    - Notes section with expanded information: Main ideas, details, and examples 
     - Summary at the bottom
 
-    Output must be in Markdown.
+    Output must be in Markdown format.
+    Ensure the layout is:
+      # Cornell Notes
+      ## Cues
+      ## Notes
+      ## Summary
+    
   expected_output: >
     Markdown document using the Cornell Method format.
   agent: cornell_expert
   input_keys: fact_output
+
+boxing_task:
+  description: >
+    Convert the following notes into the Boxing Method format:
+
+    {notes}
+
+    Use boxes to separate different sections and include a summary at the end.
+    Format your response in clean Markdown.
+  expected_output: >
+    A Markdown document formatted in the Boxing Method.
+  agent: boxing_expert
+  input_keys: fact_output
+
+flashcard_task:
+  description: >
+    Create flashcards from the following notes:
+
+    {notes}
+
+    Rules:
+    - Each flashcard must have a clear question and concise answer.
+    - Focus on key facts, definitions, dates, and concepts.
+    - Format as a Markdown list:
+
+      - **Q: What is X?**  
+        **A:** Explanation...
+
+    - Generate 5–15 cards depending on the content.
+
+    Your final answer MUST be a set of markdown-formatted Q&A flashcards.
+    Save your output to `flashcards.md`.
+  agent: flashcard_expert
+  input_keys: fact_output
+  expected_output: >
+   A set of markdown flashcards saved to flashcards.md
+
   # output_key: formatted_notes
 
 # final_editing_task:

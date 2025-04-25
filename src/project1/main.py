@@ -14,7 +14,7 @@ warnings.filterwarnings("ignore", category=SyntaxWarning, module="pysbd")
 
 def run():
     """
-    Run the crew for the selected note-taking method.
+    Runs the crew for the selected note-taking method.
     """
     try:
         # Step 1: Get input from user
@@ -31,19 +31,23 @@ def run():
         print("\nWhich method do you want to apply?")
         print("1. The Outline Method")
         print("2. The Cornell Method")
-        choice = input("Enter 1 or 2: ").strip()
+        print("3. The Boxing Method")
+        choice = input("Enter number: ").strip()
 
-        # Step 3: Get selected task
+        # Get selected task
         project = Project1()
         if choice == "1":
             format_task = project.outline_task()
         elif choice == "2":
-            format_task=project.cornell_task()
+            format_task = project.cornell_task()
+        elif choice == "3":
+            format_task = project.boxing_task()
         else:
-            raise ValueError("Invalid selection. Please enter 1 or 2.")
+            raise ValueError("Invalid selection. Please enter valid number.")
         
         grammar_task = project.grammar_task()
         fact_check_task = project.fact_check_task()
+        
         # final_task = project.final_editing_task()
         # Build crew with only the selected task/agent
         crew = Crew(
