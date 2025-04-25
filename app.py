@@ -122,7 +122,7 @@ if st.button("Run Note Structuring") and notes and method != "Select...":
                     sections = {}
                     current_section = None
                     for line in text.splitlines():
-                        if line.startswith("## "):
+                        if line.strip().startswith("## "):
                             current_section = line.replace("##", "").strip()
                             sections[current_section] = ""
                         elif current_section:
