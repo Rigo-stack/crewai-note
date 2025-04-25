@@ -2,3 +2,4 @@ crewai
 openai
 streamlit
 python-dotenv
+crewai==0.14.4
