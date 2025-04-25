@@ -6,6 +6,8 @@ from IPython.display import Markdown, display
 import sys
 import os
 import re
+import litellm
+
 
 # Ensure Python can find project1 inside src/
 # This is a workaround for the fact that we are running this script from the root directory
@@ -15,6 +17,19 @@ sys.path.append(os.path.join(os.path.dirname(__file__), "src"))
 from project1.crew import Project1
 
 load_dotenv()  # This  loads the  OpenAI key from .env
+
+openai_api_key = os.getenv("OPENAI_API_KEY")
+serper_api_key = os.getenv("SERPER_API_KEY")
+
+# Check if API keys exist
+if not openai_api_key:
+    st.error("Missing OPENAI_API_KEY. Please check your .env file.")
+else:
+    litellm.api_key = openai_api_key
+
+if not serper_api_key:
+    st.error("Missing SERPER_API_KEY. Please check your .env file.")
+
 
 @st.cache_resource
 def load_project():
