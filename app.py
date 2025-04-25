@@ -8,7 +8,8 @@ import os
 import re
 import litellm
 
-
+st.set_page_config(page_title="AI Note Structurer", layout="centered")
+st.title("AI-Powered Note Structuring App")
 # Ensure Python can find project1 inside src/
 # This is a workaround for the fact that we are running this script from the root directory
 # and not from within the src directory.
@@ -42,9 +43,6 @@ def load_markdown(file_path: str) -> str:
         with open(file_path, "r", encoding="utf-8") as f:
             return f.read()
     return ""
-
-st.set_page_config(page_title="AI Note Structurer", layout="centered")
-st.title("AI-Powered Note Structuring App")
 
 notes = st.text_area("Paste your class notes here", height=300, placeholder="e.g., Ai notes ...")
 
