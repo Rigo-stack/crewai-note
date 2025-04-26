@@ -37,7 +37,7 @@ def load_project():
     from project1.crew import Project1
     return Project1()
 
-@st.cache_data
+# @st.cache_data
 def load_markdown(file_path: str) -> str:
     if os.path.exists(file_path):
         with open(file_path, "r", encoding="utf-8") as f:
