@@ -132,7 +132,7 @@ if st.button("Run Note Structuring") and notes and method != "Select...":
                 sections = parse_markdown_sections(final_text)
 
                 cue_column = sections.get("Cues", "Cues Column not found.")
-                notes_section = sections.get(" Notes", "Notes Section not found.")
+                notes_section = sections.get("Notes", "Notes Section not found.")
                 summary = sections.get("Summary", "Summary not found.")
 
                 col1, col2 = st.columns([1, 2])
