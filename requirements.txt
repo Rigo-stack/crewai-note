@@ -2,6 +2,5 @@ crewai
 openai
 streamlit
 python-dotenv
-crewai==0.14.4
 PyPDF2>=3.0.0
 docx2txt>=0.8
