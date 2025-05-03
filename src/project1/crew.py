@@ -1,7 +1,7 @@
 from crewai import Agent, Crew, Process, Task
 from crewai.project import CrewBase, agent, crew, task
 from crewai_tools import SerperDevTool
-
+# from project1.tools.custom_tool import read_pdf, read_docx
 
 # If you want to run a snippet of code before or after the crew starts,
 # you can use the @before_kickoff and @after_kickoff decorators
@@ -65,7 +65,7 @@ class Project1():
             memory=True,
             verbose=True
         )
-
+    
     # @agent
     # def final_editor(self) -> Agent:
     #     return Agent(
@@ -117,6 +117,7 @@ class Project1():
             config=self.tasks_config['flashcard_task'],
             output_file='flashcards.md'
         )
+   
 
     # @task
     # def final_editing_task(self) -> Task:

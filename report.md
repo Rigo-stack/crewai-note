@@ -1,37 +1,57 @@
 ```markdown
-# Cornell Notes
-## Cues
-- Definition of AI agents
-- Cycle of AI agents
-- Types of AI agents
-- Reflex agents
-- Goal-based agents
-- Utility-based agents
-- Learning agents
-- Applications of AI agents
+# DonorsChoose: Business Development Representative
 
-## Notes
-- **Definition of AI Agents**: An AI agent is an autonomous system that can perceive its environment through sensors and data inputs, process this information, and execute actions via actuators to meet specific objectives.
-  
-- **Cycle of AI Agents**: These agents function in a continuous loop of observation, decision-making, and action. This enables them to adapt over time, improving effectiveness based on environmental feedback.
+## Overview
+- DonorsChoose makes it easy for anyone to help a teacher in need.
+- Aims to achieve a nation where every student has the necessary tools and experiences for a great education.
+- The Business Development Team engages top brands, major philanthropists, large school districts, and state departments of education.
+- The goal is to introduce prospective partners to DonorsChoose and inspire them to support teacher projects.
 
-- **Types of AI Agents**: 
-  - **Reflex Agents**: The simplest form of agents that react to immediate stimuli without retaining memory of prior states. They can utilize condition-action rules. 
-    - **Subcategories**: 
-      - *Simple Reflex Agents*: Respond only to current stimuli.
-      - *Model-Based Reflex Agents*: Maintain an internal state to remember previous information.
-  - **Goal-Based Agents**: Plan actions based on desired outcomes and assess possible actions to achieve those goals.
-  - **Utility-Based Agents**: Evaluate actions based on expected utility, aiming to maximize overall satisfaction or benefit.
-  - **Learning Agents**: These agents improve over time by using various strategies like reinforcement learning to adapt their behaviors based on historical data.
-  
-- **Applications of AI Agents**: AI agents play a crucial role in modern technology and are utilized in diverse fields, including:
-    - Virtual assistants
-    - Recommendation systems
-    - Smart home devices
-    - Autonomous vehicles
-    - Healthcare diagnostics
-    - Financial analysis
+## Primary Responsibilities
+### Research and Connect
+- Research and work to connect with top prospects.
+- Proactively seek and secure meetings with prospective partners.
+- Investigate and find:
+  - Contact information for key prospects.
+  - Mutual contacts within the network.
+- Draft highly personalized and motivating emails:
+  - Collaborate with the team to enhance communication.
 
-## Summary
-AI agents are sophisticated autonomous systems capable of perceiving their environment, reasoning, and taking action to achieve goals. They engage in a continuous cycle of observation and decision-making, adapting over time through feedback. Categorized into reflex, goal-based, utility-based, and learning agents, they serve various applications across multiple industries, significantly contributing to the advancement of AI technologies and enhancing efficiency in numerous sectors.
+### Secure Initial Meetings
+- Prepare for first calls:
+  - Develop strategies to secure calls and meetings.
+  - Collaborate to set measures of success for outreach efforts.
+- Prepare pitches for meetings:
+  - Ensure a smooth transition during initial calls.
+
+### Build Outreach Programs
+- Develop inaugural outbound outreach program:
+  - Construct and manage outreach cadences using communication frameworks.
+  - Utilize software like Salesloft for effective outreach.
+- Iterate and experiment:
+  - Adjust strategies based on analysis of successes and challenges.
+
+### Team Collaboration
+- Propel the team forward:
+  - Foster team morale and spirit.
+  - Organize retreats, meetings, and collaborations across teams.
+
+## Qualifications
+- Commitment to the mission of supporting public school teachers and students.
+- Efficiency and organization:
+  - Recognized for exceptional task management.
+- Flexibility and adaptability:
+  - Enthusiastic about tackling new challenges daily.
+- Strong research skills:
+  - Comfortable with extracting key insights from extensive research.
+- Persuasiveness:
+  - Skilled at winning over prospects and finding opportunities.
+- Resilience: 
+  - Undeterred by rejection; motivated to seek the right opportunities.
+- Strategic mindset:
+  - Capable of prioritizing impactful work.
+- Experience:
+  - At least 1-2 years in outreach, fundraising, business development, or similar roles.
 ```
+
+This outline provides a structured presentation of the role and expectations for a Business Development Representative at DonorsChoose, ensuring clarity and flow of information.

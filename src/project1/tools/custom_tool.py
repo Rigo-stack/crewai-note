@@ -1,28 +1,19 @@
-from crewai.tools import BaseTool
-from typing import Type
-from pydantic import BaseModel, Field
-# from crewai_tools import tool
-# import wikipedia
+from crewai_tools import tool
+from docx import Document
+import PyPDF2
 
-
-class MyCustomToolInput(BaseModel):
-    """Input schema for MyCustomTool."""
-    argument: str = Field(..., description="Description of the argument.")
-
-class MyCustomTool(BaseTool):
-    name: str = "Name of my tool"
-    description: str = (
-        "Clear description for what this tool is useful for, your agent will need this information to use it."
-    )
-    args_schema: Type[BaseModel] = MyCustomToolInput
-
-    def _run(self, argument: str) -> str:
-        # Implementation goes here
-        return "this is an example of a tool output, ignore it and move along."
 # @tool
-# def wikipedia_tool(query: str) -> str:
-#     """Returns a summary for a given topic from Wikipedia."""
-#     try:
-#         return wikipedia.summary(query, sentences=3)
-#     except Exception as e:
-#         return f"Failed to get summary: {e}"
+# def read_docx(file_path: str) -> str:
+#     """Reads a .docx file and returns its full text."""
+#     doc = Document(file_path)
+#     return "\n".join([para.text for para in doc.paragraphs])
+
+# @tool
+# def read_pdf(file_path: str) -> str:
+#     """Reads a .pdf file and returns its full text."""
+#     text = ""
+#     with open(file_path, "rb") as f:
+#         reader = PyPDF2.PdfReader(f)
+#         for page in reader.pages:
+#             text += page.extract_text()
+#     return text

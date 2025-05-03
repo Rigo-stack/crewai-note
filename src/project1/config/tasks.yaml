@@ -101,30 +101,3 @@ flashcard_task:
   input_keys: fact_output
   expected_output: >
    A set of markdown flashcards saved to flashcards.md
-
-  # output_key: formatted_notes
-
-# final_editing_task:
-#   description: >
-#     As the final editor, your job is to consolidate and merge all previous edits made to the content below:
-
-#     {notes}
-
-#     - Grammar improvements
-#     - Structural enhancements
-#     - Fact-check corrections
-
-#     IMPORTANT: Your final output MUST be a single, well-written paragraph-formatted version of the content.
-
-#     FORMAT RULES:
-#     - Write in plain text only (no Markdown formatting like headers, bullets, bold, etc.)
-#     - Use line breaks naturally at sentence or phrase boundaries
-#     - Final output must be formatted like a readable paragraph — NOT one long line
-#     - Do NOT include any citations, references, or explanations
-
-#     Save the final result as a markdown file: 'report.md'.
-
-#   expected_output: >
-#     A clean, multi-line paragraph version of the content saved to report.md.
-#   agent: final_editor
-#   input_keys: formatted_notes
