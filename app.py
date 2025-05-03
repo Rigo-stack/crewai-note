@@ -31,7 +31,7 @@ def extract_pdf_text(uploaded_file):
 def extract_docx_text(uploaded_file):
     return docx2txt.process(uploaded_file)
 
-@st.cache_data
+# @st.cache_data
 def load_markdown(file_path: str) -> str:
     if os.path.exists(file_path):
         with open(file_path, "r", encoding="utf-8") as f:
