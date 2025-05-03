@@ -1,6 +1,7 @@
 crewai
 openai
-streamlit
+streamlit>=1.20.0
 python-dotenv
 PyPDF2>=3.0.0
 docx2txt>=0.8
+litellm>=1.35.6
