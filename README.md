@@ -1,54 +1,86 @@
-# Project1 Crew
+# Agent-Note–Composition
 
-Welcome to the Project1 Crew project, powered by [crewAI](https://crewai.com). This template is designed to help you set up a multi-agent AI system with ease, leveraging the powerful and flexible framework provided by crewAI. Our goal is to enable your agents to collaborate effectively on complex tasks, maximizing their collective intelligence and capabilities.
+## Description
 
-## Installation
+This app, hosted in Streamlit, uses CrewAI agents to structure information into easy-to-review notes. The inputs for the app are text, PDF, or DOCX files.
 
-Ensure you have Python >=3.10 <3.13 installed on your system. This project uses [UV](https://docs.astral.sh/uv/) for dependency management and package handling, offering a seamless setup and execution experience.
 
-First, if you haven't already, install uv:
+
+### Information Flow
+
+- If the input is not direct text, the app extracts it from the uploaded file.
+- The extracted or pasted text is passed to a crew of AI agents.
+- The agents process the input sequentially, each performing a distinct part in preparing the final structured notes.
+
+### Agents
+
+- **Grammar Agent**: Corrects grammar and writing inconsistencies in the input.
+- **Fact-check Agent**: Validates the factual accuracy of the content.
+- **Format Agent**: Applies a selected note-taking method:
+  - Outline Method
+  - Cornell Method
+  - Boxing Method
+- **(Optional) Flashcards Agent**: Creates 5 to 15 flashcards summarizing key facts and concepts from the input text.
+
+## Technologies
+
+- **CrewAI**: Multi-agent orchestration framework
+- **Streamlit**: User interface and structured Markdown output
+- **PyPDF2**: Extracts text from PDF files
+- **docx2txt**: Extracts text from Word documents
+- **litellm**: Lightweight wrapper to call LLMs like OpenAI
+- **python-dotenv**: Loads environment variables for API key management
+
+---
+
+## Installing
+
+### 1. Prerequisites
+
+- Python `>=3.10` and `<3.13` must be installed.
+- This project uses [`uv`](https://github.com/astral-sh/uv) for dependency and package management.
+
+### 2. Install `uv`
 
 ```bash
 pip install uv
 ```
 
-Next, navigate to your project directory and install the dependencies:
-
-(Optional) Lock the dependencies and install them by using the CLI command:
-```bash
-crewai install
-```
-### Customizing
-
-**Add your `OPENAI_API_KEY` into the `.env` file**
-
-- Modify `src/project1/config/agents.yaml` to define your agents
-- Modify `src/project1/config/tasks.yaml` to define your tasks
-- Modify `src/project1/crew.py` to add your own logic, tools and specific args
-- Modify `src/project1/main.py` to add custom inputs for your agents and tasks
-
-## Running the Project
-
-To kickstart your crew of AI agents and begin task execution, run this from the root folder of your project:
+### 3. Clone the Repository
 
 ```bash
-$ crewai run
+git clone https://github.com/Rigo-stack/crewai-note.git
+cd crewai-note
+```
+### 4. Install Dependencies
+```bash
+uv pip install -r requirements.txt
+```
+### 5. Set Up Environment Variables
+```bash:
+OPENAI_API_KEY=your_openai_key
+SERPER_API_KEY=your_serper_key
 ```
 
-This command initializes the project1 Crew, assembling the agents and assigning them tasks as defined in your configuration.
+### 6. Launch App:
+``` bash
+Streamlit run app.py
+```
+---
+## Usage:
 
-This example, unmodified, will run the create a `report.md` file with the output of a research on LLMs in the root folder.
+Customization of Agents:
+- Modify 'agents.yaml' to define the agents
+- Modify 'tasks.yaml' to define the tasks
+- Modify 'crew.py' to add your own logic, tools, and specific args
+- Modify 'app.py' to add custom inputs for your agents and tasks
 
-## Understanding Your Crew
+---
+## Contributing:
 
-The project1 Crew is composed of multiple AI agents, each with unique roles, goals, and tools. These agents collaborate on a series of tasks, defined in `config/tasks.yaml`, leveraging their collective skills to achieve complex objectives. The `config/agents.yaml` file outlines the capabilities and configurations of each agent in your crew.
+Pull requests are welcome. For major changes, please open an issue first to discuss what you would like to change. Please make sure to update tests as appropriate
 
-## Support
 
-For support, questions, or feedback regarding the Project1 Crew or crewAI.
-- Visit our [documentation](https://docs.crewai.com)
-- Reach out to us through our [GitHub repository](https://github.com/joaomdmoura/crewai)
-- [Join our Discord](https://discord.com/invite/X4JWnZnxPb)
-- [Chat with our docs](https://chatg.pt/DWjSBZn)
-
-Let's create wonders together with the power and simplicity of crewAI.
+---
+## License
+[MIT](https://choosealicense.com/licenses/mit/)
