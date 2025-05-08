@@ -93,11 +93,22 @@ docx_content = "CRNNArchitectureNotes.docx"
 if "notes" not in st.session_state:
     st.session_state["notes"] = ""
 
+st.title("NoteCrew")
+st.markdown("### Structure your notes into smart, clean formats using CrewAI agents")
 
 # User inputs : PDF, Word Document, or Text
 # Streamlit’s widgets often preserve their own state unless you explicitly give them keys and clear those entries too.
 with st.sidebar:
-    st.header("Configuration")
+    st.title("Configuration")
+    st.info("""
+Welcome to **NoteCrew**! Convert messy notes into clean formats:
+- 📝 Outline Method  
+- 📦 Boxing Method  
+- 📋 Cornell Method
+
+Just upload or paste your notes, pick a format, and hit **Run Note Structuring**!
+""")
+    st.markdown("---")
   
     input_type = st.sidebar.selectbox("Select the type of input", ["Select...", "PDF", "Word Document", "Text"], key="input_type")
 
@@ -165,7 +176,7 @@ with st.sidebar:
             if st.button(" Load Example Notes", key="load_example"):
                 st.session_state["notes"] = txt_content.strip()
         with col2:
-            if st.button(" Clear Example Notes", key="clear_example"):
+            if st.button(" Clear Notes", key="clear_example"):
                 st.session_state["notes"] = ""
 
         st.text_area("Paste your class notes here", height=300, placeholder="e.g., AI notes ...", key="notes")
@@ -175,6 +186,7 @@ with st.sidebar:
     flashcards_opt = st.checkbox("Generate Flashcards", value=False, help="Generate 5 to 15 flashcards from the notes.")
 
     run = st.button("Run Note Structuring")
+    
 
 # Pull state values out
 notes = st.session_state.get("notes", "")
@@ -239,11 +251,11 @@ if method != st.session_state.prev_method:
     st.session_state.pop("flashcards_md", None)  # Clear flashcards if method changes
     st.session_state.prev_method = method          
 
+st.markdown("---")
 # Output rendering
 if "final_notes" in st.session_state:
     final_text = st.session_state["final_notes"]
-    st.markdown("## 📄 Output", unsafe_allow_html=True)
-
+    # st.markdown("## 📝 Notes Structuring Output", unsafe_allow_html=True)
     # # # 🔍 Debug output to inspect actual content
     # with st.expander("🔎 Raw Markdown Output (Debug)"):
     #     st.code(final_text[::], language="markdown")
@@ -350,9 +362,9 @@ if "final_notes" in st.session_state:
 
 # Flashcards output:
 if flashcards_opt and "flashcards_md" in st.session_state:
+    st.markdown("---")
     flashcards_text = st.session_state["flashcards_md"]
     st.markdown("## 🃏 Flashcards", unsafe_allow_html=True)
-    st.subheader("📝 Flashcards")
 
     pattern = r"- \*\*Q: (.*?)\*\*.*?\*\*A:\*\* (.*?)\n"
     qa_pairs = re.findall(pattern, flashcards_text, re.DOTALL)
