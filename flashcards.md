@@ -1,38 +1,48 @@
 ```markdown
-# AI Agent Flashcards
+- **Q: What is the purpose of cost in neural networks?**  
+  **A:** Cost measures how wrong our machine's predictions are.
 
-- **Q: What is an AI agent?**  
-  **A:** An AI agent is an autonomous system that perceives its environment, reasons about the information, and takes actions to achieve specific goals.
+- **Q: Define a scalar, vector, and matrix in the context of neural networks.**  
+  **A:** A scalar is a single number (often for biases), a vector is an array of numbers (representing single-layer activations), and a matrix is a two-dimensional table of numbers used for weights between layers.
 
-- **Q: How do AI agents operate?**  
-  **A:** They operate in a continuous cycle of observation, decision-making, and action, adapting based on feedback from their environment.
+- **Q: What does the power rule in calculus state?**  
+  **A:** The power rule states that the derivative of \( x^n \) is \( n \cdot x^{n-1} \).
 
-- **Q: What are the types of AI agents?**  
-  **A:** AI agents can be categorized into reflex agents, model-based reflex agents, goal-based agents, utility-based agents, learning agents, and hierarchical agents.
+- **Q: How does gradient descent function in a neural network?**  
+  **A:** Gradient descent uses the gradient of the cost function \( \nabla C \) to update model parameters (weights and biases) in the direction that most decreases cost.
 
-- **Q: What are reflex agents?**  
-  **A:** Reflex agents respond to immediate stimuli without internal memory of past states. Model-based reflex agents maintain an internal representation of the environment for better flexibility.
+- **Q: What is the structure of a neural network?**  
+  **A:** A neural network consists of layers of nodes (neurons) connected by weights and biases, where each node in one layer connects to every node in the next layer.
 
-- **Q: What are goal-based agents?**  
-  **A:** Goal-based agents plan their actions to achieve specific desired outcomes, evaluating potential courses of action to meet set goals.
+- **Q: How do we perform feed-forward in a neural network?**  
+  **A:** Feed-forward is performed by computing \( z = W^{[l]} \cdot a^{[l-1]} + b^{[l]} \) and then passing \( z \) through a nonlinear activation function \( g(z) \).
 
-- **Q: What do utility-based agents evaluate?**  
-  **A:** Utility-based agents evaluate actions based on their expected utility or value, aiming to maximize overall satisfaction or benefit.
+- **Q: What is the sigmoid function and its range?**  
+  **A:** The sigmoid function is defined as \( g(z) = \frac{1}{1 + e^{-z}} \) and compresses input to the range (0, 1).
 
-- **Q: What are learning agents?**  
-  **A:** Learning agents improve their performance over time by adapting strategies through data from previous experiences in dynamic environments.
+- **Q: How does vectorization improve neural network training?**  
+  **A:** Vectorization allows processing of \( m \) training samples at once by arranging input data \( X \) as an \( n \times m \) matrix.
 
-- **Q: What are hierarchical agents?**  
-  **A:** Hierarchical agents organize tasks into sub-agents, allowing complex tasks to be broken down into manageable parts.
+- **Q: What are common cost functions used in neural networks?**  
+  **A:** Common cost functions include mean squared error (MSE), root mean squared error (RMSE), mean absolute error (MAE), and binary cross-entropy for binary outcomes.
 
-- **Q: In which applications are AI agents widely used?**  
-  **A:** AI agents are used in virtual assistants, recommendation systems, smart home devices, autonomous vehicles, and multi-agent systems for complex task coordination.
+- **Q: What is backpropagation in the context of training a neural network?**  
+  **A:** Backpropagation is the algorithm that trains the network by computing the gradients \( \frac{\partial C}{\partial W^{[l]}} \) and \( \frac{\partial C}{\partial b^{[l]}} \) via the chain rule.
 
-- **Q: How do AI agents function in competitive environments?**  
-  **A:** AI agents can interact within competitive environments, such as games, to achieve objectives amid the presence of other agents.
+- **Q: How do convex and non-convex cost functions differ?**  
+  **A:** Convex cost functions have a single global minimum, while non-convex functions can have multiple local minima.
 
-- **Q: What is the significance of AI agents in technology?**  
-  **A:** AI agents provide functionality and efficiency across various fields, contributing significantly to advancements in artificial intelligence systems.
+- **Q: What is the significance of the learning rate \( \alpha \) in gradient descent?**  
+  **A:** The learning rate \( \alpha \) controls the size of each update step, and it typically varies, often chosen through experimentation.
+
+- **Q: What should be monitored to prevent overfitting while training a neural network?**  
+  **A:** Monitor performance on validation data to mitigate the risk of overfitting, which occurs when the model performs well on training data but poorly on unseen data.
+
+- **Q: What steps are involved in building a neural network from scratch?**  
+  **A:** Initialize weights and biases randomly, perform feed-forward to compute predictions, compute cost, repeat backpropagation for parameter updates, and monitor the cost until convergence.
+
+- **Q: Why must activation functions be nonlinear?**  
+  **A:** Activation functions must be nonlinear to allow the neural network to compute complex functions; if linear, the entire network would behave like a single-layer model.
 ```
 
-This set of markdown-formatted Q&A flashcards has been saved to `flashcards.md`.
+This set of flashcards encapsulates essential concepts and facts pertaining to building a neural network from scratch, facilitating effective studying through active recall techniques.

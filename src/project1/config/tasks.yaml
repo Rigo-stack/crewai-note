@@ -31,14 +31,36 @@ fact_check_task:
 
 outline_task:
   description: >
-    Convert the following notes into the Outline Method format:
+    Convert the following raw notes into a structured outline using the Outline Method format.
 
     {notes}
 
-    Use indentation and bullets to clearly structure topics and subpoints. Format your response
-    in clean Markdown.
+    The Outline Method is a hierarchical note-taking system where main topics are aligned to the left, and supporting details are nested underneath using indentation. Follow these formatting rules:
+    - Main points should be labeled as numbered headings (## [1. Topic Name]).
+    - Supporting ideas should be bullet points under the heading.
+    - Sub-details or examples should be indented further as nested bullet points.
+
+    Use the following **Markdown** structure:
+    ## [1. Main Topic]  
+    - [Brief description or key idea]  
+    - [Supporting detail or explanation]  
+      - [Optional sub-detail or example]
+
+    ## [2. Next Topic]  
+    - [Key point]  
+      - [Subpoint]  
+      - [Subpoint]
+
+    ## [3. Another Topic]  
+    - [Summary of concept]  
+    - [Real-world application or example]
+
+    ## [4. Final Topic]  
+    - [Challenges / Pros / Cons / Impacts]
+
+    Your output MUST be a clean, well-organized **Markdown** document using this layout.
   expected_output: >
-    A Markdown document formatted in the Outline Method.
+    A Markdown document using the Outline Method format saved to report.md
   agent: outline_expert
   input_keys: fact_output
   # output_key: formatted_notes
@@ -62,22 +84,45 @@ cornell_task:
       ## Summary
     
   expected_output: >
-    Markdown document using the Cornell Method format.
+    A Markdown document using the Cornell Method format saved to report.md
   agent: cornell_expert
   input_keys: fact_output
+  
 
 boxing_task:
   description: >
-    Convert the following notes into the Boxing Method format:
+    Convert the following notes into the Boxing Method format using clean, structured Markdown.
 
     {notes}
 
-    Use boxes to separate different sections and include a summary at the end.
-    Format your response in clean Markdown.
+    The Boxing Method organizes information into clearly labeled "boxes" or sections, 
+    each with a concise title and bullet points of related details. End with a summary 
+    that captures key insights from all boxes.
+
+    Your response MUST follow this Markdown layout:
+    ## Box 1: [Title or Topic]
+    - [Key points or supporting details]
+    - [Relevant examples or facts]
+
+    ## Box 2: [Next Topic]
+    - [Main ideas and explanations]
+    - [Additional supporting notes]
+
+    ## Box 3: [Another Topic]
+    - [Concept summary or definitions]
+    - [Contextual examples]
+
+    ## Summary
+    - [Brief recap or conclusions drawn across topics]
+
+    Ensure formatting is clean and readable. Avoid raw text dumps. Use concise bullets and appropriate headings.
+
+      ## Summary
   expected_output: >
-    A Markdown document formatted in the Boxing Method.
+    A well-organized Markdown document using the Boxing Method structure, saved as `report.md`
   agent: boxing_expert
   input_keys: fact_output
+  
 
 flashcard_task:
   description: >
