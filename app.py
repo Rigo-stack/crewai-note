@@ -95,6 +95,15 @@ if "notes" not in st.session_state:
 
 st.title("NoteCrew")
 st.markdown("### Structure your notes into smart, clean formats using CrewAI agents")
+# with st.expander("# Info"):
+#     st.info("""
+#             Welcome to **NoteCrew**! Convert messy notes into clean formats:
+#             - 📝 Outline Method  
+#             - 📦 Boxing Method  
+#             - 📋 Cornell Method
+
+#             Just upload or paste your notes, pick a format, and hit **Run Note Structuring**!
+# """)
 
 # User inputs : PDF, Word Document, or Text
 # Streamlit’s widgets often preserve their own state unless you explicitly give them keys and clear those entries too.
@@ -108,8 +117,7 @@ Welcome to **NoteCrew**! Convert messy notes into clean formats:
 
 Just upload or paste your notes, pick a format, and hit **Run Note Structuring**!
 """)
-    st.markdown("---")
-  
+    
     input_type = st.sidebar.selectbox("Select the type of input", ["Select...", "PDF", "Word Document", "Text"], key="input_type")
 
     if input_type == "PDF":
@@ -183,7 +191,8 @@ Just upload or paste your notes, pick a format, and hit **Run Note Structuring**
         
     method = st.selectbox("Choose a formatting method", ["Select...", "Outline Method", "Cornell Method", "Boxing Method"], key="method")
 
-    flashcards_opt = st.checkbox("Generate Flashcards", value=False, help="Generate 5 to 15 flashcards from the notes.")
+    # flashcards_opt = st.checkbox("Generate Flashcards", value=False, help="Generate 5 to 15 flashcards from the notes.")
+    flashcards_opt = st.toggle("Generate Flashcards", key="flashcards_opt", value=False, help="Generate 5 to 15 flashcards from the notes.")
 
     run = st.button("Run Note Structuring")
     
