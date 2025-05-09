@@ -35,6 +35,8 @@ But once the text is extracted, arranging it, fact-checking that you wrote the c
   - Cornell Method
   - Boxing Method
 - **(Optional) Flashcards Agent**: Creates 5 to 15 flashcards summarizing key facts and concepts from the input text.
+  
+![image_url](https://github.com/Rigo-stack/crewai-note/blob/f913dc6ca187cf922988a3d55a858cbf9947a315/agents.drawio.png)
 
 ## Technologies
 
@@ -88,6 +90,7 @@ Customization of Agents:
 - Modify 'tasks.yaml' to define the tasks
 - Modify 'crew.py' to add your own logic, tools, and specific args
 - Modify 'app.py' to add custom inputs for your agents and tasks
+  
 ---
 ## Contributing:
 
