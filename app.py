@@ -9,6 +9,15 @@ from dotenv import load_dotenv
 from crewai import Crew, Process
 import time
 
+#Image processing imports
+import easyocr
+import cv2
+import numpy as np
+from PIL import Image
+import tempfile
+import os
+
+
 # Set up Streamlit UI
 st.set_page_config(page_title="NoteCrew", layout="wide")
 
@@ -63,6 +72,24 @@ def parse_markdown_sections(text):
 
     return sections
 
+# Helper function to process image 
+def process_image(image_path, gpu=False):
+    reader = easyocr.Reader(['en'], gpu=gpu)
+    result = reader.readtext(image_path)
+
+    text_lines = [detection[1] for detection in result]
+    saved_text = " ".join(text_lines)
+
+    img = cv2.imread(image_path)
+    for detection in result:
+        top_left = tuple([int(val) for val in detection[0][0]])
+        bottom_right = tuple([int(val) for val in detection[0][2]])
+        text = detection[1]
+        font = cv2.FONT_HERSHEY_SIMPLEX
+        img = cv2.rectangle(img, top_left, bottom_right, (0, 255, 0), 2)
+        img = cv2.putText(img, text, top_left, font, 0.6, (255, 255, 255), 1, cv2.LINE_AA)
+
+    return img, saved_text
 
 
 # Loads API keys from .env file
@@ -118,7 +145,7 @@ Welcome to **NoteCrew**! Convert messy notes into clean formats:
 Just upload or paste your notes, pick a format, and hit **Run Note Structuring**!
 """)
     
-    input_type = st.sidebar.selectbox("Select the type of input", ["Select...", "PDF", "Word Document", "Text"], key="input_type")
+    input_type = st.sidebar.selectbox("Select the type of input", ["Select...", "PDF", "Word Document", "Text", "Image"], key="input_type")
 
     if input_type == "PDF":
         col1, col2 = st.columns(2, gap="small")
@@ -175,6 +202,24 @@ Just upload or paste your notes, pick a format, and hit **Run Note Structuring**
         uploaded_file = st.file_uploader("Upload a DOCX file", type=["docx"], key="uploader_docx")
         if uploaded_file:
             st.session_state["notes"] = extract_docx_text(uploaded_file)
+    
+    #image processing
+    elif input_type == "Image":
+        uploaded_file = st.file_uploader("Upload an image", type=["jpg", "jpeg", "png"], key="uploader_image")
+        
+        if uploaded_file:
+            with tempfile.NamedTemporaryFile(delete=False, suffix=".png") as temp_file:
+                temp_file.write(uploaded_file.read())
+                temp_path = temp_file.name
+
+            try:
+                # Run OCR and extract just the text
+                _, extracted_text = process_image(temp_path)
+                st.session_state["notes"] = extracted_text.strip()
+            except Exception as e:
+                st.error(f"❌ Failed to extract text: {e}")
+            finally:
+                os.remove(temp_path)
 
 
     elif input_type == "Text":
